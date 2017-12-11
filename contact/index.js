@@ -7,14 +7,21 @@ var listName =  [{id:1,Fname :'Nut',Lname:'Su',age:'22',email:'5616@gmail.com'},
 {id:5,Fname :'thana',Lname:'kam',age:'21',email:'aonza@gmail.com'},
 {id:6,Fname :'pat',Lname:'tane',age:'20',email:'sword@gmail.com'}]
 
-router.get('/', (req, res) => {res.json(listName)});
-//Nuttanon
-router.post('/',(req, res)=> {
-        var bear = req.body; 
-        bear.id=listName.length = listName.push(bear)
-        res.json({message:'Add id +1'});
+//get all listName
+// router.get('/', (req, res) => {
+//         res.json(listName)
+//     });
+
+    //Nuttanon post id
+    router.post('/',(req,res)=>{
+        var add = req.body;
+        add.id=listName.push(add)
+        res.json({Message:'complete add'})
+    })  
+
+    //get get id
+    router.get('/:id', (req, res) => {       
+    res.json(listName[--req.params.id])
     });
-
-
-
+        
 module.exports = router
