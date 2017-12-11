@@ -24,6 +24,16 @@ var listName =  [{id:1,Fname :'Nut',Lname:'Su',age:'22',email:'5616@gmail.com'},
     res.json(listName[--req.params.id])
     });
 
+    //delete
+    router.delete('/',(req, res)=>{
+        listName.pop(listName,1)
+        res.send('Delete complete');
+    })
+    //put
+    router.put('/:id',(req,res)=>{
+        res.json(Object.assign(listName[--req.params.id],req.body))
+    })
+
     
     //get Name && gat all
     router.get('/', (req, res) => {    
