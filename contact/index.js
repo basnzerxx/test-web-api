@@ -23,5 +23,33 @@ var listName =  [{id:1,Fname :'Nut',Lname:'Su',age:'22',email:'5616@gmail.com'},
     router.get('/:id', (req, res) => {       
     res.json(listName[--req.params.id])
     });
+
+    
+    //get Name && gat all
+    router.get('/', (req, res) => {    
+         if(req.query.Fname){
+            for(i=0;i<listName.length;i++){ 
+                if(listName[i].Fname===req.query.Fname)
+                    res.json(listName[i]) 
+             }
+          
+            for(i=0;i<listName.length;i++){
+                if(listName[i].Fname!==req.query.Fname)
+                    res.json({Message:'Not listName'})     
+             }
+        }
+        else if(req.query.Lname){
+            for(i=0;i<listName.length;i++){ 
+                if(listName[i].Lname===req.query.Lname)
+                    res.json(listName[i]) 
+             }
+          
+            for(i=0;i<listName.length;i++){
+                if(listName[i].Lname!==req.query.Lname)
+                    res.json({Message:'Not listName'})     
+             }
+        }
+        res.json(listName)
+    });    
         
 module.exports = router
